@@ -9,7 +9,7 @@ search_space = {
 
 experiment = Experiment('local')
 experiment.config.trial_command = 'python mlp.py'
-experiment.config.trial_code_directorya = '.'
+experiment.config.trial_code_directory = '.'
 experiment.config.search_space = search_space
 experiment.config.tuner.name = 'TPE'
 experiment.config.tuner.class_args['optimize_mode'] = 'maximize'
