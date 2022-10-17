@@ -114,13 +114,13 @@ def train(train_x, train_y, test_x, text_y, args: argparse.Namespace):
                 print('[Iteration #{}/{}] [Loss #{:4f}]'.format(i, n_iterations, loss))
 
     # show learning curve
-    
+    '''
     plt.title('Training Curve')
     plt.xlabel('Iteration')
     plt.ylabel('Loss')
     plt.plot(range(len(loss_curve)), loss_curve)
     plt.savefig("Loss.png")
-    
+    '''
     # evaluate on the training set
     loss, y_hat = calc_loss_and_grad(train_x, train_y, w1, b1, w2, b2, eval_only=True)
     predictions = np.argmax(y_hat, axis=1)
