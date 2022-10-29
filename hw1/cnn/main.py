@@ -89,12 +89,11 @@ def train_model(model,train_loader, valid_loader, criterion, optimizer, schedule
             loss = criterion(outputs, labels)
             _, predictions = torch.max(outputs, 1)
             loss.backward()
-            scheduler.step()
             optimizer.step()
 
             total_loss += loss.item() * inputs.size(0)
             total_correct += torch.sum(predictions == labels.data)
-
+        scheduler.step()
         epoch_loss = total_loss / len(train_loader.dataset)
         epoch_acc = total_correct.double() / len(train_loader.dataset)
         return epoch_loss, epoch_acc.item()
