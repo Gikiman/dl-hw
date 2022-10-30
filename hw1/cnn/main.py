@@ -199,7 +199,7 @@ if __name__ == '__main__':
 
     ## about training
     num_epochs = 100
-    lr = 0.001
+    lr = 0.01
 
     if args.test:
         model = torch.load(os.path.join(args.save_dir, 'best_model_{}.pt'.format(args.model_type)))
@@ -217,7 +217,7 @@ if __name__ == '__main__':
 
     ## optimizer
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
-    scheduler_steplr = StepLR(optimizer, step_size=10, gamma=0.1)
+    scheduler_steplr = StepLR(optimizer, step_size=20, gamma=0.5)
     scheduler_warmup = GradualWarmupScheduler(optimizer, multiplier=1, total_epoch=5, after_scheduler=scheduler_steplr)
 
     ## loss function
